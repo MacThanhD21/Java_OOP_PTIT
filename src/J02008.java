@@ -1,6 +1,7 @@
 
 
 import java.util.*;
+
 public class J02008 {
     public static long gcd(long a, long b) {
         if (b == 0) return a;
@@ -17,8 +18,7 @@ public class J02008 {
 
         while(t-- > 0){
             int n = sc.nextInt();
-            long ans1 = 1;
-            long ans2 = 0;
+            long ans = 1;
             for(long i = 1; i <= n; i++){
                 long gc = gcd(ans, i);
                 ans = bcnn(ans, i);

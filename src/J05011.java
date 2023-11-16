@@ -48,8 +48,8 @@ public class J05011 {
         }
         
         public double getTime(){
-            int h = Double.parseDouble(this.en.substring(0, 2)) - Double.parseDouble(this.st.substring(0, 2));
-            int m = (Double.parseDouble(this.en.substring(3)) - Double.parseDouble(this.st.substring(3))) / 60;
+            double h = Double.parseDouble(this.en.substring(0, 2)) - Double.parseDouble(this.st.substring(0, 2));
+            double m = (Double.parseDouble(this.en.substring(3)) - Double.parseDouble(this.st.substring(3))) / 60;
             
             return h + m;
         }

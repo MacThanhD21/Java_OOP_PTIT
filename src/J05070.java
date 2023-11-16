@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class CLB {
-    private String idCLB, name;
-    private int giaVe;
+     String idCLB, name;
+     int giaVe;
 
     public CLB(String idCLB, String name, int giaVe) {
         this.idCLB = idCLB;

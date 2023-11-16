@@ -7,6 +7,5 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="src" path="J07025"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

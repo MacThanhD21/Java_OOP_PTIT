@@ -35,7 +35,7 @@ class Online_Time {
     }
     public int getOnlineTime() {
         int dateNum = this.getDateNum();
-        
+        return 0;
     }
 
     @Override

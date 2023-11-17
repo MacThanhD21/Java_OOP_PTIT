@@ -29,5 +29,4 @@ public class J03010 {
             System.out.println(res);
         }
     }   
-    
 }

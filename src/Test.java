@@ -90,45 +90,46 @@ public class Test {
 
         // 6. String
 
-        String s[] = "MAC VAN THANH".split("\\s+");
-        String res = "";
-        for (String x : s) {
-            res += Character.toUpperCase(x.charAt(0)) + x.substring(1).toLowerCase() + " ";
-        }
-        System.out.println(res.trim());
-
-        // StringTokenizer
-        String tmp = "java python C++ php";
-        StringTokenizer st = new StringTokenizer(tmp);
-
-        while (st.hasMoreTokens()) {
-            System.out.print(st.nextToken() + " ");
-        }
-        System.out.println();
-        // 7. BigInteger
-        Scanner sc = new Scanner(System.in);
-
-        BigInteger a = new BigInteger(sc.nextLine());
-        BigInteger b = new BigInteger(sc.nextLine());
-
-        System.out.println(a.divide(new BigInteger("100")));
-        System.out.println(b);
-
-        // 8. Xử lý Date
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            Date date1 = format.parse("14/08/2018");
-            Date date2 = format.parse("20/08/2018");
-            long diffInMillies = Math.abs(date2.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24);
-            System.out.println(diffInMillies);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        String s[] = "MAC VAN THANH".split("\\s+");
+//        String res = "";
+//        for (String x : s) {
+//            res += Character.toUpperCase(x.charAt(0)) + x.substring(1).toLowerCase() + " ";
+//        }
+//        System.out.println(res.trim());
+//
+//        // StringTokenizer
+//        String tmp = "java python C++ php";
+//        StringTokenizer st = new StringTokenizer(tmp);
+//
+//        while (st.hasMoreTokens()) {
+//            System.out.print(st.nextToken() + " ");
+//        }
+//        System.out.println();
+//        // 7. BigInteger
+//        Scanner sc = new Scanner(System.in);
+//
+//        BigInteger a = new BigInteger(sc.nextLine());
+//        BigInteger b = new BigInteger(sc.nextLine());
+//
+//        System.out.println(a.divide(new BigInteger("100")));
+//        System.out.println(b);
+//
+//        // 8. Xử lý Date
+//        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+//        try {
+//            Date date1 = format.parse("14/08/2018");
+//            Date date2 = format.parse("20/08/2018");
+//            long diffInMillies = Math.abs(date2.getTime() - date1.getTime()) / (1000 * 60 * 60 * 24);
+//            System.out.println(diffInMillies);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
         // 9. ArrayList
 
         // ObjectInputStream obj = new ObjectInputStream(new FileInputStream("main.txt"));
 
         // ArrayList <Integer> arr = obj.readObject();
+
     }
 }

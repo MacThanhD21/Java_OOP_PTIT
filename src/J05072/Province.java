@@ -1,4 +1,4 @@
-package src.J05071;
+package src.J05072;
 
 public class Province {
     private String id_P, name_P, call_Fee;

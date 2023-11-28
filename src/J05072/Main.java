@@ -1,7 +1,6 @@
-package src.J05071;
+package src.J05072;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +16,12 @@ public class Main {
             String s[] = sc.nextLine().split("\\s+");
             dsCall.add(new Phone(s[0], s[1], s[2], dsProvince));
         }
+        Collections.sort(dsCall, new Comparator<Phone>(){
+            @Override
+            public int compare(Phone o1, Phone o2) {
+                return o2.getFee() - o1.getFee();
+            }
+        });
         for(Phone x : dsCall) {
             System.out.println(x);
         }

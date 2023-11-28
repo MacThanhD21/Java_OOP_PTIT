@@ -1,33 +1,26 @@
 import java.util.*;
-
 public class J08015 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt(); 
-
-        for (int t = 0; t < T; t++) {
-            int N = sc.nextInt(); 
-            long K = sc.nextLong(); 
-            long[] A = new long[N]; 
-
-            for (int i = 0; i < N; i++) {
-                A[i] = sc.nextLong();
+        int test = sc.nextInt();
+        while(test-- > 0) {
+            int n = sc.nextInt();
+            int k = sc.nextInt();
+            long[] a = new long[n];
+            for(int i = 0; i < n; i++) {
+                a[i] = sc.nextLong();
             }
+            long ans = 0;
+            HashMap<Long, Integer> mp = new HashMap<>();
+            for(int i = 0; i < n; i++) {
+                long x = k - a[i];
 
-            Map<Long, Integer> frequencyMap = new HashMap<>();
-
-            int count = 0;
-
-            for (int i = 0; i < N; i++) {
-                long complement = K - A[i];
-
-                if (frequencyMap.containsKey(complement)) {
-                    count += frequencyMap.get(complement);
+                if(mp.containsKey(x)) {
+                    ans += mp.get(x);
                 }
-
-                frequencyMap.put(A[i], frequencyMap.getOrDefault(A[i], 0) + 1);
+                mp.put(a[i], mp.getOrDefault(a[i], 0) + 1);
             }
-            System.out.println(count);
+            System.out.println(ans);
         }
     }
 }

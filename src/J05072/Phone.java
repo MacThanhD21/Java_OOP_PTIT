@@ -1,10 +1,11 @@
-package src.J05071;
+package src.J05072;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Phone {
+
+public class Phone{
     private String id, st_Time, en_Time;
     Date d1, d2;
     SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
@@ -20,7 +21,7 @@ public class Phone {
             System.out.println(e);
         }
         for(Province x : dsProvince) {
-            if(this.id.substring(1, 3).equals(x.getId_P())) {
+            if(x.getId_P().equals(this.id.substring(1, 3))) {
                 this.pr = x;
                 break;
             }
@@ -65,7 +66,7 @@ public class Phone {
                     + " " + this.getFee();
         }
         else {
-            return this.id + " Noi Mang " + this.getTime() + " " + this.getFee();
+            return this.id + " Noi mang " + this.getTime() + " " + this.getFee();
         }
     }
 }

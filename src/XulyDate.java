@@ -1,30 +1,19 @@
-package Javaa;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+package src;
+import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 
 public class XulyDate {
     public static void main(String[] args) {
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        // Thời gian ban đầu
+        LocalTime time1 = LocalTime.parse("01:02:03");
+        LocalTime time2 = LocalTime.parse("03:04:03");
 
-        // Thời điểm bắt đầu
-        String startTime = "09:30";
-        // Thời điểm kết thúc
-        String endTime = "12:45";
+        // Tính khoảng cách giữa hai thời gian
+        long hours = Math.abs(ChronoUnit.HOURS.between(time1, time2));
+        long minutes = Math.abs(ChronoUnit.MINUTES.between(time1, time2)) % 60;
+        long seconds = Math.abs(ChronoUnit.SECONDS.between(time1, time2)) % 60;
 
-        try {
-            System.out.println(Math.ceil(8.0/3));
-            // Chuyển các chuỗi thời gian thành đối tượng Date
-            Date startDate = sdf.parse(startTime);
-            Date endDate = sdf.parse(endTime);
-
-            // Tính số phút giữa hai thời điểm
-            long diffInMillies = Math.abs(endDate.getTime() - startDate.getTime());
-            long diffInMinutes = (diffInMillies / (1000 * 60));
-
-            System.out.println("Số phút giữa " + startTime + " và " + endTime + " là: " + diffInMinutes + " phút.");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        // In ra kết quả
+        System.out.printf("%02d:%02d:%02d", hours, minutes, seconds);
     }
 }

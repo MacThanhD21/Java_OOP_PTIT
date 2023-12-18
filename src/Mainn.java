@@ -1,64 +1,52 @@
-//
-//import java.io.*;
-//import java.util.*;
-//
-//class Pair<T, S> {
-//
-//    private T first;
-//    private S second;
-//
-//    public Pair(T first, S second) {
-//        this.first = first;
-//        this.second = second;
-//    }
-//
-//    public T getFirst() {
-//        return first;
-//    }
-//
-//    public S getSecond() {
-//        return second;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return first + " " + second;
-//    }
-//
-//    public boolean isPrime() {
-//        if ((Integer)first < 2 || (Integer)second < 2) {
-//            return false;
-//        }
-//        for (Integer i = 2; i <= Math.sqrt((Integer)first); i++) {
-//            if ((Integer)first % i == 0) {
-//                return false;
-//            }
-//        }
-//        for (Integer i = 2; i <= Math.sqrt((Integer)second); i++) {
-//            if ((Integer)second % i == 0) {
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
-//}
-//
-//public class Mainn {
-//    public static void main(String[] args) throws IOException {
-//        Scanner sc = new Scanner(new File("DATA.in"));
-//        int t = sc.nextInt();
-//        while(t-->0){
-//            int n = sc.nextInt();
-//            boolean check = false;
-//            for(int i = 2; i <= 2*Math.sqrt(n); i++){
-//                Pair<Integer, Integer> p = new Pair<>(i, n-i);
-//                if(p.isPrime()){
-//                    System.out.println(p);
-//                    check = true;
-//                    break;
-//                }
-//            }
-//            if(!check) System.out.println(-1);
-//        }
-//    }
-//}
+import java.io.*;
+import java.util.*;
+import java.time.*;
+import java.time.temporal.ChronoUnit;
+import java.text.SimpleDateFormat;
+class Time implements Comparable<Time>{
+    private String id, name, in_Time, ou_Time;
+    private int hour, minute;
+    public Time(String id, String name, String in_Time, String ou_Time) {
+        this.id = id;
+        this.name = name;
+        this.in_Time = in_Time;
+        this.ou_Time = ou_Time;
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+        try {
+            Date date_1 = sdf.parse(this.in_Time);
+            Date date_2 = sdf.parse(this.ou_Time); 
+            this.hour = (int) ((date_2.getTime() - date_1.getTime()) / (1000 * 60 * 60));
+            this.minute = (int) ((date_2.getTime() - date_1.getTime()) / (1000 * 60) % 60);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
+
+    @Override 
+    public String toString() {
+        return this.id + " " + this.name + " " + this.hour + " gio " + this.minute + " phut";
+    }
+    @Override
+    public int compareTo(Time o) {
+        if(this.hour != o.hour) {
+            return o.hour - this.hour;
+        } else {
+            return o.minute - this.minute;
+        }
+    }
+}
+public class Mainn {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = Integer.parseInt(sc.nextLine());
+        ArrayList<Time> arr = new ArrayList<>();
+        for(int i = 0; i < n; i++) {
+            arr.add(new Time(sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine()));
+        }
+        Collections.sort(arr);
+        for(Time x : arr) {
+            System.out.println(x);
+        }
+    }
+}

@@ -1,0 +1,1 @@
+{"name":"Local: J08021","url":"e:\\IT\\JavaaPTIT\\src\\J08021.java","tests":[{"id":1702866346203,"input":"3\n((()\n)()())\n()(()))))()()()()","output":""},{"id":1702867070350,"input":"","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\IT\\JavaaPTIT\\src\\J08021.java","group":"local","local":true}

@@ -27,36 +27,31 @@ public class Main {
         // long daysDifference = ChronoUnit.DAYS.between(date1, date2);
         // System.out.println(daysDifference);
 
-        // BigInteger a = new BigInteger("10");
-        // BigInteger b = new BigInteger("3");
-
+        BigInteger a = new BigInteger("10");
+        BigInteger b = new BigInteger("3");
+        // System.out.println(a.divide(a.gcd(b)).multiply(b));
         // System.out.println(a.multiply(b));  
         
-        // Lam Tron
-        double a = 2.569754;
-        System.out.println(String.format("%.2f", Math.round(a * 100.0) / 100.0));
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            Date x1 = sdf.parse("01/01/2003");
+            Date x2 = sdf.parse("10/01/2003");
+            long days = (x2.getTime() - x1.getTime()) / (1000 * 60 * 60 * 24);
+            System.out.println(days);
+        } catch (Exception e) {
+        }
+        
+        SimpleDateFormat sdf_G = new SimpleDateFormat("HH:mm:ss");
+        try {
+            Date x1 = sdf_G.parse("02:00:00");
+            Date x2 = sdf_G.parse("04:30:00");
+            long Time = (x2.getTime() - x1.getTime()) / (1000);
+            long h = Time / 3600;
+            long m = (Time % 3600) / 60;
+            System.out.println(h + " " + m);
+        } catch (Exception e) {
+        }
 
-        Scanner sc = new Scanner(System.in);
-        // Mang 2 chieu
-        int ar[][] = new int[3][3];
-        for (int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3; j++) {
-                ar[i][j] = sc.nextInt();
-            }
-        }
-        for(int i = 0; i < 3; i++) {
-            for(int j = 0; j < 3;j++) {
-                System.out.print(ar[i][j] + " ");
-            }
-            System.out.println();
-        }
-        // Mang 1 chieu
-        int arr[] = new int[5];
-        for(int i = 0; i < 5; i++) {
-            arr[i] = sc.nextInt();
-        }
-        for(int i = 0; i < 5; i++) {
-            System.out.print(arr[i] + " ");
-        }
+        
     }
 }

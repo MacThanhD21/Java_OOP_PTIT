@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 class CLB {
-     String idCLB, name;
-     int giaVe;
+    String idCLB, name;
+    int giaVe;
 
     public CLB(String idCLB, String name, int giaVe) {
         this.idCLB = idCLB;
@@ -12,12 +13,12 @@ class CLB {
     }
 }
 
-class TranDau {
+class TranDau implements Comparable<TranDau> {
     private String id;
     private CLB clb;
     private long soVe, doanhThu;
 
-    TranDau(String id, long soVe, ArrayList<CLB> dsCLB) {
+    public TranDau(String id, long soVe, ArrayList<CLB> dsCLB) {
         this.id = id;
         this.soVe = soVe;
         for (CLB tmp : dsCLB) {
@@ -33,10 +34,19 @@ class TranDau {
     public String toString() {
         return this.id + " " + this.clb.name + " " + this.doanhThu;
     }
+
+    @Override
+    public int compareTo(TranDau o) {
+        // TODO Auto-generated method stub
+        if (this.doanhThu != o.doanhThu) {
+            return (int) (o.doanhThu - this.doanhThu);
+        } else {
+            return this.clb.name.compareTo(o.clb.name);
+        }
+    }
 }
 
 public class J05070 {
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -50,6 +60,7 @@ public class J05070 {
         while (m-- > 0) {
             dsTD.add(new TranDau(sc.next(), sc.nextLong(), dsCLB));
         }
+        Collections.sort(dsTD);
         for (TranDau tmp : dsTD) {
             System.out.println(tmp);
         }

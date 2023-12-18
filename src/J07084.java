@@ -1,61 +1,50 @@
 import java.util.*;
 import java.io.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
+import java.text.SimpleDateFormat;
+class Time implements Comparable<Time>{
+    private String name, in_Time, ou_Time;
+    private int total_Time;
 
-class Online_Time {
-    private String name, st_Time, en_Time;
-    private String in_date, out_date;
-    private String in_Hour, out_Hour;
 
-    public Online_Time(String name, String in_date, String out_date, String in_Hour, String out_Hour) {
+    public Time(String name, String in_Time, String ou_Time) {
         this.name = name;
-        this.in_date = in_date;
-        this.out_date = out_date;
-        this.in_Hour = in_Hour;
-        this.out_Hour = out_Hour;
-    }
-    
-    public int getDateNum() {
-        String date1Str = this.in_date;
-        String date2Str = this.out_date;
-        
-        // Define the date format pattern
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        
-        // Parse the date strings into LocalDate objects using the specified pattern
-        LocalDate date1 = LocalDate.parse(date1Str, formatter);
-        LocalDate date2 = LocalDate.parse(date2Str, formatter);
-
-        // Calculate the number of days between the two dates
-        long daysBetween = ChronoUnit.DAYS.between(date1, date2);
-
-        return (int) daysBetween;
-    }
-    public int getOnlineTime() {
-        int dateNum = this.getDateNum();
-        return 0;
+        this.in_Time = in_Time;
+        this.ou_Time = ou_Time;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        try {
+            Date date_1 = sdf.parse(this.in_Time);
+            Date date_2 = sdf.parse(this.ou_Time); 
+            this.total_Time = (int) ((date_2.getTime() - date_1.getTime()) / (1000 * 60));
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     @Override
     public String toString() {
-        return this.name + " " + this.getOnlineTime();
+        return this.name + " " + this.total_Time;
+    }
+
+    @Override
+    public int compareTo(Time o) {
+        return o.total_Time - this.total_Time;
     }
 }
 public class J07084 {
     public static void main(String[] args) throws FileNotFoundException{
-        Scanner sc = new Scanner(System.in);
-
-        // Scanner sc = new Scanner(new File("ONLINE.in"));
+        Scanner sc = new Scanner(new File("ONLINE.in"));
+        // Scanner sc = new Scanner(System.in);
 
         int n = Integer.parseInt(sc.nextLine());
-
-        ArrayList <Online_Time> arr = new ArrayList<>();
+        ArrayList<Time> timeList = new ArrayList<>();
         for(int i = 0; i < n; i++) {
-            arr.add(new Online_Time(sc.nextLine(), sc.next(), sc.nextLine().substring(1), sc.next(), sc.nextLine().substring(1)));
+            String name = sc.nextLine();
+            String in_Time = sc.nextLine();
+            String ou_Time = sc.nextLine();
+            timeList.add(new Time(name, in_Time, ou_Time));
         }
-        for(Online_Time x : arr) {
+        Collections.sort(timeList);
+        for(Time x : timeList) {
             System.out.println(x);
         }
     }

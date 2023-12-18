@@ -1,35 +1,26 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
+import java.io.*;
 
 public class J07040 {
     public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException{
-        ObjectInputStream ip1 = new ObjectInputStream(new FileInputStream("NHIPHAN.in"));
-        HashSet<String> se1 = new HashSet<>();
-        ArrayList<String> arr = (ArrayList<String>) ip1.readObject();
+        ObjectInputStream ip = new ObjectInputStream(new FileInputStream(new File("NHIPHAN.in")));
+        ArrayList<String> ar = (ArrayList<String>) ip.readObject();
+        HashSet<String> hs = new HashSet<>(ar);
 
-        for(String i : arr){
-            String [] tmp = i.split("\\s+");
-            for(String j : tmp){
-                se1.add(j.toLowerCase());
+        for(String s : ar) {
+            String[] res = s.split("\\s+");
+            for(String x : res) {
+                hs.add(x.toLowerCase());
             }
         }
-
         Scanner sc = new Scanner(new File("VANBAN.in"));
-
-        HashSet<String> se2 = new HashSet<>();
+        HashSet<String> hs_2 = new HashSet<>(ar);
 
         while(sc.hasNext()) {
             String s = sc.next().toLowerCase();
-            if(se1.contains(s) && !se2.contains(s)){
+            if(hs.contains(s) && !hs_2.contains(s)) {
                 System.out.println(s);
-                se2.add(s);
+                hs_2.add(s);
             }
         }
     }

@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class J03029 {
@@ -15,10 +14,6 @@ public class J03029 {
             if (s.isEmpty()) {
                 continue;
             }
-            s = s.replace("?", "? ");
-            s = s.replace(".", ". ");
-            s = s.replace("!", "! ");
-            
             String[] tmp = s.split("\\s+");
             for (int i = 0; i < tmp.length; i++) {
                 s = tmp[i];
@@ -33,7 +28,8 @@ public class J03029 {
                 } else if (i == tmp.length - 1) {
                     System.out.println(".");
                     nextL = true;
-                } else if (!tmp[i + 1].contentEquals(".") && !tmp[i + 1].contentEquals("!") && !tmp[i + 1].contentEquals("?")) {
+                } 
+                else if (!tmp[i + 1].equals(".") && !tmp[i + 1].equals("!") && !tmp[i + 1].equals("?")) {
                     System.out.print(" ");
                 }
             }

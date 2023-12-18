@@ -1,21 +1,23 @@
-
 import java.util.*;
 
 public class J03019 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String s = scanner.nextLine();
-        
-        String result = "";
+        Scanner sc = new Scanner(System.in);
+        Stack<Character> st = new Stack<>();
+        String s = sc.nextLine();
 
-        for(int i = 0; i < s.length() - 1; i++) {
-            if(s.charAt(i) >= s.charAt(i + 1)) {
-                result += s.charAt(i);
+        for (int i = 0;i<s.length();i++) {
+            while (!st.empty() && s.charAt(i) > st.peek()) {
+                st.pop();
             }
+            st.push(s.charAt(i));
         }
-        
-        System.out.println(result);
 
-        scanner.close();
+        String res = "";
+        while (!st.empty()) {
+            res = st.pop() + res;
+        }
+
+        System.out.println(res);
     }
 }

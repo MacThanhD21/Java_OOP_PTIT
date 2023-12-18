@@ -22,21 +22,22 @@ public class J03027 {
             String s = sc.nextLine();
             Stack<Character> st = new Stack<>();
 
-            for(Character c : s.toCharArray()) {
-                if (!st.isEmpty() && st.peek() == c) {
+            for(char c : s.toCharArray()) {
+                if(!st.isEmpty() && st.peek() == c) {
                     st.pop();
                 }
                 else {
                     st.push(c);
                 }
             }
-
-            StringBuilder sb = new StringBuilder();
-            for(Character x : st) {
-                sb.append(x);
+            if(st.size() == 0) {
+                System.out.println("Empty String");
             }
-
-            System.out.println(sb.toString().length() > 0 ? sb.toString() : "Empty String"); 
+            else {
+                for(char c : st) {
+                    System.out.print(c);
+                }
+            }
         }
     }
 }
